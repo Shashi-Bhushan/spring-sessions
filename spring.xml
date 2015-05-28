@@ -3,6 +3,11 @@
 
 <beans>
 	<bean id="triangle" class="com.shashi.shapes.Triangle" >
-		<constructor-arg value="Equilateral"/>
+		<!-- 
+			will give error without a type here
+			because then spring will try to find a constructor Traingle(int ,String) and won't initialize Triangle(String,int) 
+		-->
+		<constructor-arg type="int" value="36"/>
+		<constructor-arg type="java.lang.String" value="Equilateral"/>
 	</bean>
 </beans>

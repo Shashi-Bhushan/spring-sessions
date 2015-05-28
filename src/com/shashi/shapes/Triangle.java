@@ -8,6 +8,9 @@ public class Triangle {
 	/*
 	 * Constructors 
 	 */
+	public Triangle(){
+	}
+	
 	public Triangle(String type) {
 		this.type = type;
 	}

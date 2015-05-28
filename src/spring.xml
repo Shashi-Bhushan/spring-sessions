@@ -4,10 +4,9 @@
 <beans>
 	<bean id="triangle" class="com.shashi.shapes.Triangle" >
 		<!-- 
-			will give error without a type here
-			because then spring will try to find a constructor Traingle(int ,String) and won't initialize Triangle(String,int) 
-		-->
-		<constructor-arg type="int" value="36"/>
-		<constructor-arg type="java.lang.String" value="Equilateral"/>
+			won't work without a default constructor in Traingle class
+		 -->
+		<property name="side" value="35"/>
+		<property name="type" value="isosceles"/>
 	</bean>
 </beans>

@@ -1,18 +1,18 @@
 package com.shashi;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.shashi.shapes.Triangle;
 
 public class Application {
 	public static void main(String...strings){
 		
-		BeanFactory beanFactory = new XmlBeanFactory(new FileSystemResource("spring.xml"));
-		Triangle triangle = (Triangle)beanFactory.getBean("triangle");
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		Triangle triangle = (Triangle)context.getBean("triangle");
 		
-		System.out.println("Initializing from Bean factory : ");
+		System.out.println("Initializing from Application Context : ");
 		triangle.drawShape();
+		
 	}
 }

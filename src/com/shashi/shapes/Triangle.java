@@ -1,54 +1,38 @@
 package com.shashi.shapes;
 
+import com.shashi.shapes.point.Point;
+
 public class Triangle {
 
-	private String type;
-	private int side;
+	private Point pointA;
+	private Point pointB;
+	private Point pointC;
 	
-	/*
-	 * Constructors 
-	 */
-	public Triangle(){
-	}
-	
-	public Triangle(String type) {
-		this.type = type;
-	}
-
-	public Triangle(int side) {
-		super();
-		this.side = side;
-	}
-
-	public Triangle(String type, int side) {
-		super();
-		this.type = type;
-		this.side = side;
-	}
-
-	/*
-	 * Getters and Setters
-	 */
-	public void setType(String type){
-		this.type = type;
+	public Point getPointA(){
+		return pointA;
 	}
 	
-	public String getType(){
-		return type;
+	public void setPointA(Point pointA){
+		this.pointA = pointA;
 	}
 	
-	public int getSide() {
-		return side;
+	public Point getPointB(){
+		return pointB;
 	}
-
-	public void setSide(int side) {
-		this.side = side;
+	
+	public void setPointB(Point pointB){
+		this.pointB = pointB;
 	}
-
-	/*
-	 * Draw shape Method
-	 */
+	
+	public Point getPointC(){
+		return pointC;
+	}
+	
+	public void setPointC(Point pointC){
+		this.pointC = pointC;
+	}
+	
 	public void drawShape(){
-		System.out.println( "drawing Traingle Shape of Type :" + this.getType() + " and Side : " + this.getSide() );
+		System.out.println( "Point A : " + this.getPointA() + " | Point B : " + this.getPointB() + " | Point C : " + this.getPointC() );
 	}
 }

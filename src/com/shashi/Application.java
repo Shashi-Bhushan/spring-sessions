@@ -9,7 +9,7 @@ public class Application {
 	public static void main(String...strings){
 		
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-		Triangle triangle = (Triangle)context.getBean("triangle");
+		Triangle triangle = (Triangle)context.getBean("triangle-alias");
 		
 		System.out.println("Initializing from Application Context : ");
 		triangle.drawShape();

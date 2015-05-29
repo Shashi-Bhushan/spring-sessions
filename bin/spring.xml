@@ -3,10 +3,34 @@
 
 <beans>
 	<bean id="triangle" class="com.shashi.shapes.Triangle" >
-		<!-- 
-			won't work without a default constructor in Traingle class
-		 -->
-		<constructor-arg index="1" value="35"/>
-		<constructor-arg index="0" value="Isosceles"/>
+		<!-- Ref can point to an ID, NAME or ALIAS -->
+		<property name="pointA" ref="zeroPoint"/>
+		
+		<!-- IdRef Bean -->
+		<property name="pointB">
+			<ref bean="point2"/>
+		</property>
+		
+		<!-- Inner Bean -->
+		<property name="pointC">
+			<bean class="com.shashi.shapes.point.Point">
+				<property name="x" value="20"/>
+				<property name="y" value="0"/>
+			</bean>
+		</property>
 	</bean>
+	
+	<!-- Can be referenced anywhere -->
+	<bean id="zeroPoint" class="com.shashi.shapes.point.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<bean id="point2" class="com.shashi.shapes.point.Point">
+		<property name="x" value="-20"/>
+		<property name="y" value="0"/>
+	</bean>
+	
+	<!-- ALIAS -->
+	<alias name="triangle" alias="triangle-alias"/>
 </beans>

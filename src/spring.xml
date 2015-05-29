@@ -6,7 +6,7 @@
 		<!-- 
 			won't work without a default constructor in Traingle class
 		 -->
-		<property name="side" value="35"/>
-		<property name="type" value="isosceles"/>
+		<constructor-arg type="int" value="35"/>
+		<constructor-arg type="java.lang.String" value="Isosceles"/>
 	</bean>
 </beans>

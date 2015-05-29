@@ -3,20 +3,12 @@
 
 <beans>
 	<bean id="triangle" class="com.shashi.shapes.Triangle" >
-		<!-- Ref can point to an ID, NAME or ALIAS -->
-		<property name="pointA" ref="zeroPoint"/>
-		
-		<!-- IdRef Bean -->
-		<property name="pointB">
-			<ref bean="point2"/>
-		</property>
-		
-		<!-- Inner Bean -->
-		<property name="pointC">
-			<bean class="com.shashi.shapes.point.Point">
-				<property name="x" value="20"/>
-				<property name="y" value="0"/>
-			</bean>
+		<property name="points">
+			<list>
+				<ref bean="zeroPoint"/>
+				<ref bean="point2"/>
+				<ref bean="point3"/>
+			</list>
 		</property>
 	</bean>
 	
@@ -29,6 +21,10 @@
 	<bean id="point2" class="com.shashi.shapes.point.Point">
 		<property name="x" value="-20"/>
 		<property name="y" value="0"/>
+	</bean>
+	<bean id="point3" class="com.shashi.shapes.point.Point">
+		<property name="x" value="0"/>
+		<property name="y" value="20"/>
 	</bean>
 	
 	<!-- ALIAS -->

@@ -1,27 +1,38 @@
 package com.shashi.shapes;
 
-import java.util.List;
-
 import com.shashi.shapes.point.Point;
 
 public class Triangle {
 
-private List<Point> points;
+	private Point pointA;
+	private Point pointB;
+	private Point pointC;
 	
+	public Point getPointA(){
+		return pointA;
+	}
 	
-	public List<Point> getPoints() {
-		return points;
+	public void setPointA(Point pointA){
+		this.pointA = pointA;
 	}
-
-
-	public void setPoints(List<Point> points) {
-		this.points = points;
+	
+	public Point getPointB(){
+		return pointB;
 	}
-
-
+	
+	public void setPointB(Point pointB){
+		this.pointB = pointB;
+	}
+	
+	public Point getPointC(){
+		return pointC;
+	}
+	
+	public void setPointC(Point pointC){
+		this.pointC = pointC;
+	}
+	
 	public void drawShape(){
-		for(Point point: points){
-			System.out.println("Point ("+point.getX()+","+point.getY()+")");
-		}
+		System.out.println( "Point A : " + this.getPointA() + " | Point B : " + this.getPointB() + " | Point C : " + this.getPointC() );
 	}
 }

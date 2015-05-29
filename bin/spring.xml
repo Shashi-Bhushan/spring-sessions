@@ -2,27 +2,33 @@
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<bean id="triangle" class="com.shashi.shapes.Triangle" >
-		<property name="points">
-			<list>
-				<ref bean="zeroPoint"/>
-				<ref bean="point2"/>
-				<ref bean="point3"/>
-			</list>
-		</property>
+	<!-- 
+		Name of the bean matches the name of the member variable of class
+		in this case, we can ask Spring to 'Autowire' beans byName
+		___________________________________________________________________
+		'Autowire' by type is used if their is ONLY ONE bean of specific type in the xml.
+		Eg. if their was only one Point bean here, then we could have used autowire byType
+		___________________________________________________________________
+		'Autowire' by constructor does the same but instead of using setter, it'll use a constructor
+		same condition applies i.e. ONLY ONE bean allowed
+		___________________________________________________________________
+		'Autowire' hides the structure of the bean being made at runtime.
+	 -->
+	<bean id="triangle" class="com.shashi.shapes.Triangle" autowire="byName">
+		
 	</bean>
 	
 	<!-- Can be referenced anywhere -->
-	<bean id="zeroPoint" class="com.shashi.shapes.point.Point">
+	<bean id="pointA" class="com.shashi.shapes.point.Point">
 		<property name="x" value="0"/>
 		<property name="y" value="0"/>
 	</bean>
 	
-	<bean id="point2" class="com.shashi.shapes.point.Point">
+	<bean id="pointB" class="com.shashi.shapes.point.Point">
 		<property name="x" value="-20"/>
 		<property name="y" value="0"/>
 	</bean>
-	<bean id="point3" class="com.shashi.shapes.point.Point">
+	<bean id="pointC" class="com.shashi.shapes.point.Point">
 		<property name="x" value="0"/>
 		<property name="y" value="20"/>
 	</bean>

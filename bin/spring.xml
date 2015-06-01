@@ -14,7 +14,7 @@
 		___________________________________________________________________
 		'Autowire' hides the structure of the bean being made at runtime.
 	 -->
-	<bean id="triangle" class="com.shashi.shapes.Triangle" autowire="byName">
+	<bean id="triangle" class="com.shashi.shapes.Triangle" autowire="byName" scope="prototype">
 		
 	</bean>
 	

@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
-<beans>
+<!-- 
+	Global init and destroy methods for the whole beans scope.
+	wherever specific init-method and destroy-method are not specified, these global init and destroy are called.
+	
+	for Eg.
+	when their is a use case that your beans have a common name for their init and destroy methods then use this
+ -->
+<beans default-init-method="globalInit" default-destroy-method="globalCleanUp">
 	<!-- 
 		Bean Inheritance
 		[
@@ -33,6 +40,9 @@
 		</property>
 	</bean>
 	
+	<!-- 
+		no specific init and destroy method specified. Global ones are used for this bean
+	 -->
 	<bean id="triangle2" class="com.shashi.shapes.Triangle" parent="parentTriangle">
 		<property name="points">
 			<!-- 

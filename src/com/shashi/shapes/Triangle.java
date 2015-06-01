@@ -41,7 +41,21 @@ public class Triangle {
 		System.out.println("This init method of Triangle Class is not specific to Spring only.");
 	}
 	
+	/*
+	 * Call this as destory-method in spring.xml
+	 */
 	public void customCleanUp(){
 		System.out.println("This Destroy Method of Triangle Class is not specific to Spring only.");
+	}
+	
+	/*
+	 * GLOBAL init and Destroy
+	 */
+	public void globalInit(){
+		System.out.println("This is the Global Init Method for Traingle Bean");
+	}
+	
+	public void globalCleanUp(){
+		System.out.println("This is the Global Destroy Method for Traingle Bean");
 	}
 }

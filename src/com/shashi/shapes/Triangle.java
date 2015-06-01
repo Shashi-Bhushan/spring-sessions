@@ -50,13 +50,13 @@ public class Triangle implements ApplicationContextAware,BeanNameAware {
 	public void setApplicationContext(ApplicationContext context)
 			throws BeansException {
 		// TODO Auto-generated method stub
-		System.out.println("ApplicationContext is : " + context);
+		// System.out.println("ApplicationContext is : " + context);
 		this.context = context;
 	}
 
 	@Override
 	public void setBeanName(String beanName) {
 		// TODO Auto-generated method stub
-		System.out.println("Bean Name is : " + beanName);
+		// System.out.println("Bean Name is : " + beanName);
 	}
 }

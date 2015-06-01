@@ -3,20 +3,27 @@
 
 <beans>
 	<!-- 
-		Name of the bean matches the name of the member variable of class
-		in this case, we can ask Spring to 'Autowire' beans byName
-		___________________________________________________________________
-		'Autowire' by type is used if their is ONLY ONE bean of specific type in the xml.
-		Eg. if their was only one Point bean here, then we could have used autowire byType
-		___________________________________________________________________
-		'Autowire' by constructor does the same but instead of using setter, it'll use a constructor
-		same condition applies i.e. ONLY ONE bean allowed
-		___________________________________________________________________
-		'Autowire' hides the structure of the bean being made at runtime.
+		Bean Inheritance
+		[
+			creating one bean as abstract bean
+			other traingle beans will inherit from this 
+		]
 	 -->
-	<bean id="triangle" class="com.shashi.shapes.Triangle" autowire="byName" scope="prototype">
-		
+	<bean id="parentTriangle" class="com.shashi.shapes.Triangle">
+		<property name="pointA" ref="pointA"/>
 	</bean>
+	 
+	<bean id="triangle1" class="com.shashi.shapes.Triangle" parent="parentTriangle">
+		<property name="pointB" ref="pointB"/>
+		<property name="pointC" ref="pointC"/>
+	</bean>
+	
+	<bean id="triangle2" class="com.shashi.shapes.Triangle" parent="parentTriangle">
+		<property name="pointB" ref="pointB"/>
+		<!-- if i wont add this here, i'll get a NPE when accessing this object's third Point reference -->
+		<property name="pointC" ref="pointA"/>
+	</bean>
+	
 	
 	<!-- Can be referenced anywhere -->
 	<bean id="pointA" class="com.shashi.shapes.point.Point">

@@ -10,30 +10,25 @@ public class Application {
 	public static void main(String...strings){
 		
 		/*
-		 * if you want to have this context available anywhere else
-		 * For Eg. in case when points of different traingles needs to be different.
+		 * Bean Definition inheritance means inheriting definition of a Bean instead of rewriting the bean inheritance again and again.
 		 * [
-		 * 	in previous commits, Traingle was a Singleton so it's Points will be Singleton as well.
-		 * 	Result: different Traingle references but having same points
+		 * 	for Eg. you have a bean definition of Points repeated in your spring.xml then in this case ,
+		 * 	you would inherit definition of the bean instead of rewriting it.
+		 * 
+		 * 	their is an 'Abstract Bean Definition' which serves only as a template for beans.
+		 * 	other beans inherit this 'Abstract Bean Definition' to give a structure  
 		 * ]
 		 */
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-		Triangle triangle = (Triangle)context.getBean("triangle-alias");
+		Triangle triangle = (Triangle)context.getBean("triangle1");
 		
 		System.out.println("Initializing from Application Context : ");
 		triangle.drawShape();
-		
-		Point point = new Point();
-		point.setX(35);
-		point.setY(70);
-		triangle.setPointA(point);
-		triangle.drawShape();
 
 		/*
-		 * This bean is the same as previous bean
-		 * Single object
+		 * This is the Second type of Bean
 		 */
-		Triangle secondTriangle = (Triangle)context.getBean("triangle-alias");
+		Triangle secondTriangle = (Triangle)context.getBean("triangle2");
 		
 		System.out.println("Initializing from Application Context : ");
 		secondTriangle.drawShape();

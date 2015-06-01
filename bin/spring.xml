@@ -53,7 +53,6 @@
 				<ref bean="pointC"/>
 			</list>
 		</property>
-
 	</bean>
 	
 	
@@ -71,6 +70,12 @@
 		<property name="x" value="0"/>
 		<property name="y" value="20"/>
 	</bean>
+	
+	<!-- 
+		Registers the BeanPostProcessor in this xml file.
+		PostProcessor won't wokr without it.
+	 -->
+	<bean class="com.shashi.postProcessor.ApplicationBeanPostProcessor"/>
 	
 	<!-- ALIAS -->
 	<alias name="triangle" alias="triangle-alias"/>

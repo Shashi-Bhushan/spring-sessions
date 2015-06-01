@@ -1,10 +1,9 @@
 package com.shashi;
 
-import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.shashi.shapes.Triangle;
-import com.shashi.shapes.point.Point;
 
 public class Application {
 	public static void main(String...strings){
@@ -19,7 +18,9 @@ public class Application {
 		 * 	other beans inherit this 'Abstract Bean Definition' to give a structure  
 		 * ]
 		 */
-		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		context.registerShutdownHook();
+		
 		Triangle triangle = (Triangle)context.getBean("triangle1");
 		
 		System.out.println("Initializing from Application Context : ");
@@ -32,5 +33,16 @@ public class Application {
 		
 		System.out.println("Initializing from Application Context : ");
 		secondTriangle.drawShape();
+		
+		/*
+		 * in order to close context object here, need to use AbstractApplicationContext
+		 * which registers a shutdown hook for java program so when the main method finish, the hook is called
+		 * and the context also shuts down
+		 * ONLY FOR JavaSE APPLICATIONS
+		 * 
+		 * after registering the shutdown hook, configure the init and destroy methods of the class Triangle
+		 * 
+		 * destroy method called when shutdown hook is initialized
+		 */
 	}
 }

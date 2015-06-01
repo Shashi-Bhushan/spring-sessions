@@ -2,12 +2,7 @@ package com.shashi.shapes;
 
 import java.util.List;
 
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.DisposableBean;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 import com.shashi.shapes.point.Point;
 
@@ -20,7 +15,7 @@ import com.shashi.shapes.point.Point;
  * DISADVANTAGE :
  * 		both interfaces are specific to Spring. so the bean is bound to use the spring framework this way.		
  */
-public class Triangle implements ApplicationContextAware,BeanNameAware,InitializingBean,DisposableBean {
+public class Triangle {
 
 	private List<Point> points;
 	private ApplicationContext context;
@@ -38,30 +33,15 @@ public class Triangle implements ApplicationContextAware,BeanNameAware,Initializ
 			System.out.println( "Point( x " + point.getX() + ", y " + point.getY() + " )" );
 		}
 	}
-
-	@Override
-	public void setApplicationContext(ApplicationContext context)
-			throws BeansException {
-		// TODO Auto-generated method stub
-		// System.out.println("ApplicationContext is : " + context);
-		this.context = context;
+	
+	/*
+	 * Call this as init-method in spring.xml
+	 */
+	public void customInit(){
+		System.out.println("This init method of Triangle Class is not specific to Spring only.");
 	}
-
-	@Override
-	public void setBeanName(String beanName) {
-		// TODO Auto-generated method stub
-		// System.out.println("Bean Name is : " + beanName);
-	}
-
-	@Override
-	public void afterPropertiesSet() throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("Initializing Bean init Method called for Triangle");
-	}
-
-	@Override
-	public void destroy() throws Exception {
-		// TODO Auto-generated method stub
-		System.out.println("Destroying Bean destroy Method called for Triangle");
+	
+	public void customCleanUp(){
+		System.out.println("This Destroy Method of Triangle Class is not specific to Spring only.");
 	}
 }

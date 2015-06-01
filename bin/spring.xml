@@ -17,7 +17,11 @@
 		</property>
 	</bean>
 	 
-	<bean id="triangle1" class="com.shashi.shapes.Triangle" parent="parentTriangle">
+	 <!-- 
+	 	Register customInit as Initialization Method for This Bean only
+	 	Register customCleanUp as Destroy Method for This Bean only
+	  -->
+	<bean id="triangle1" class="com.shashi.shapes.Triangle" parent="parentTriangle" init-method="customInit" destroy-method="customCleanUp">
 		<property name="points">
 			<list>
 				<!-- 

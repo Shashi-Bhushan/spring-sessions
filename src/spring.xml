@@ -5,23 +5,41 @@
 	<!-- 
 		Bean Inheritance
 		[
-			creating one bean as abstract bean
+			creating one bean as abstract bean(by specifying the abstract attribute to true for the bean)
 			other traingle beans will inherit from this 
 		]
 	 -->
-	<bean id="parentTriangle" class="com.shashi.shapes.Triangle">
-		<property name="pointA" ref="pointA"/>
+	<bean id="parentTriangle" class="com.shashi.shapes.Triangle" abstract="true">
+		<property name="points">
+			<list>
+				<ref bean="pointA"/>
+			</list>
+		</property>
 	</bean>
 	 
 	<bean id="triangle1" class="com.shashi.shapes.Triangle" parent="parentTriangle">
-		<property name="pointB" ref="pointB"/>
-		<property name="pointC" ref="pointC"/>
+		<property name="points">
+			<list>
+				<!-- 
+					default behaviour is to overwrite pointA reference of parentTriangle here
+				 -->
+				<ref bean="pointB"/>
+				<ref bean="pointC"/>
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="triangle2" class="com.shashi.shapes.Triangle" parent="parentTriangle">
-		<property name="pointB" ref="pointB"/>
-		<!-- if i wont add this here, i'll get a NPE when accessing this object's third Point reference -->
-		<property name="pointC" ref="pointA"/>
+		<property name="points">
+			<!-- 
+				Merge=true - specifies that parentTriangle's List to be merged with this Bean's List, not overwrite it
+			 -->
+			<list merge="true">
+				<ref bean="pointB"/>
+				<ref bean="pointC"/>
+			</list>
+		</property>
+
 	</bean>
 	
 	

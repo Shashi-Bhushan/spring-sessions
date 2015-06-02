@@ -13,7 +13,8 @@ import com.shashi.shapes.point.Point;
  * InitializingBean 	: used when TriangleBean needs to know when it's being initialized(IT's a MARKER interface as well)
  * DisposableBean 		: used when TriangleBean needs to know when it's being destroyed
  * DISADVANTAGE :
- * 		both interfaces are specific to Spring. so the bean is bound to use the spring framework this way.		
+ * 		both interfaces are specific to Spring. so the bean is bound to use the spring framework this way.	
+ * 		use init-method and destroy-method in this case	
  */
 public class Triangle {
 

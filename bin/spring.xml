@@ -75,8 +75,19 @@
 		Registers the BeanPostProcessor in this xml file.
 		PostProcessor won't wokr without it.
 	 -->
+	 <!-- THIS BEAN METHODS CREATED FOR EVERY NEW INSTANCIATION AND DESTRUCTION OF BEANS -->
 	<bean class="com.shashi.postProcessor.ApplicationBeanPostProcessor"/>
+	<!-- THIS BEAN CREATED AND FUNCTION CALLED WHEN BeanFactory IS INITIALIZED -->
+	<bean class="com.shashi.postProcessor.ApplicationBeanFactoryPostProcessor"/>
 	
-	<!-- ALIAS -->
-	<alias name="triangle" alias="triangle-alias"/>
+	<!-- 
+		Order of Execution :
+			-> ApplicationBeanFactoryPostProcessor
+			-> ApplicationBeanPostProcessor beforeInit (for every bean)
+			-> Singleton beans created ( by looking in spring.xml file )
+			-> ApplicationBeanPostProcessor afterInit (for every bean)
+			-> Constructors called 	( <constructor-arg> )
+			-> Setters called		( <property> )
+	 -->
+	
 </beans>

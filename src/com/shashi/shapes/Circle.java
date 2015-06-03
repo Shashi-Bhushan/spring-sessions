@@ -1,6 +1,7 @@
 package com.shashi.shapes;
 
-import org.springframework.beans.factory.annotation.Required;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.shashi.Shapes;
 import com.shashi.shapes.point.Point;
@@ -10,12 +11,12 @@ public class Circle implements Shapes {
 	private Point center;
 	
 	/*
-	 * Marks that this setter and thus the Point 'center' is Required.
-	 * Note that this Required annotation won't work by itself
+	 * Marks that this setter is to be Autowired by Type
 	 * 
-	 * RequiredAnnotationBeanPostProcessor bean needs to be created as well for this.
+	 * AutowiredAnnotationBeanPostProcessor bean needs to be created as well for this.
+	 * their is an unambiguous byType Point Bean ins pring.xml so it'll resolve and autowire that Bean in this Setter function 
 	 */
-	@Required
+	@Autowired
 	public void setCenter(Point center){
 		this.center = center;
 	}

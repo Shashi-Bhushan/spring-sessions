@@ -58,8 +58,8 @@
 	
 	<!-- Can be referenced anywhere -->
 	<bean id="pointA" class="com.shashi.shapes.point.Point">
-		<property name="x" value="0"/>
-		<property name="y" value="0"/>
+		<property name="x" value="${pointA.pointX}"/>
+		<property name="y" value="${pointA.pointY}"/>
 	</bean>
 	
 	<bean id="pointB" class="com.shashi.shapes.point.Point">
@@ -71,23 +71,8 @@
 		<property name="y" value="20"/>
 	</bean>
 	
-	<!-- 
-		Registers the BeanPostProcessor in this xml file.
-		PostProcessor won't wokr without it.
-	 -->
-	 <!-- THIS BEAN METHODS CREATED FOR EVERY NEW INSTANCIATION AND DESTRUCTION OF BEANS -->
-	<bean class="com.shashi.postProcessor.ApplicationBeanPostProcessor"/>
-	<!-- THIS BEAN CREATED AND FUNCTION CALLED WHEN BeanFactory IS INITIALIZED -->
-	<bean class="com.shashi.postProcessor.ApplicationBeanFactoryPostProcessor"/>
-	
-	<!-- 
-		Order of Execution :
-			-> ApplicationBeanFactoryPostProcessor
-			-> ApplicationBeanPostProcessor beforeInit (for every bean)
-			-> Singleton beans created ( by looking in spring.xml file )
-			-> ApplicationBeanPostProcessor afterInit (for every bean)
-			-> Constructors called 	( <constructor-arg> )
-			-> Setters called		( <property> )
-	 -->
-	
+	 <!-- does the substitution before beanFactory is initialized -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="PropertiesPlaceholderConfig.properties"/>
+	</bean>
 </beans>

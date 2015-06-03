@@ -25,3 +25,4 @@ public class Point {
 		return this.getX() + " - " + this.getY();
 	}
 }
+

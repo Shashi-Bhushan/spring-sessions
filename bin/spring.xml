@@ -25,8 +25,9 @@
 	</bean>
 	
 	<bean id="circle" class="com.shashi.shapes.Circle">
-		<property name="center" ref="pointA"/>
+		
 	</bean>
+	<bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
 	 
 	 <!-- 
 	 	Register customInit as Initialization Method for This Bean only

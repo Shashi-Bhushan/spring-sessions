@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 
+import com.shashi.Shapes;
 import com.shashi.shapes.point.Point;
 
 /*
@@ -16,7 +17,7 @@ import com.shashi.shapes.point.Point;
  * 		both interfaces are specific to Spring. so the bean is bound to use the spring framework this way.	
  * 		use init-method and destroy-method in this case	
  */
-public class Triangle {
+public class Triangle implements Shapes {
 
 	private List<Point> points;
 	private ApplicationContext context;
@@ -30,6 +31,7 @@ public class Triangle {
 	}
 
 	public void drawShape(){
+		System.out.println("Drawing Traingle");
 		for(Point point : points){
 			System.out.println( "Point( x " + point.getX() + ", y " + point.getY() + " )" );
 		}

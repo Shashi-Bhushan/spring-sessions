@@ -44,5 +44,8 @@ public class Application {
 		 * 
 		 * destroy method called when shutdown hook is initialized
 		 */
+		
+		Shapes shape = (Shapes)context.getBean("circle");
+		shape.drawShape();
 	}
 }

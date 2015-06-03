@@ -23,6 +23,10 @@
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="circle" class="com.shashi.shapes.Circle">
+		<property name="center" ref="pointA"/>
+	</bean>
 	 
 	 <!-- 
 	 	Register customInit as Initialization Method for This Bean only

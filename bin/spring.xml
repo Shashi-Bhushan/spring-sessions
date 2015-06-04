@@ -8,11 +8,14 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-   <context:annotation-config/>
-	<bean id="circle" class="com.shashi.shapes.Circle">
+   	<context:annotation-config/>
+	<!-- 
+		we need to tell Spring to scan through not only this xml file for bean definitions here
+		but also, in the code for @Component Annotation and Mark certain classes as Beans
 		
-	</bean>
-	 
+		component-scan is the tag that does the work
+	 -->
+	<context:component-scan base-package="com.shashi"></context:component-scan> 
 	 <!-- 
 	 	instead of pointA, if the name would be 'center' i.e. same as propertyName 
 	 	the Spring will inject bean named 'center' to setter of Circle class.
@@ -38,8 +41,6 @@
 		<property name="y" value="${pointA.pointY}"/>
 	</bean>
 	
-	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
-	<bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 	 <!-- does the substitution before beanFactory is initialized -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="PropertiesPlaceholderConfig.properties"/>

@@ -4,9 +4,26 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Component;
+
 import com.shashi.Shapes;
 import com.shashi.shapes.point.Point;
 
+/*
+ * Marks the Circle as a Bean
+ * no need to define it in spring.xml file
+ * 
+ * equivalent to creating bean in xml
+ * <bean name="circle" class=""></bean>
+ * 		-> Name of bean is circle in smallCase
+ * 
+ * DISADVANTAGE is
+ * 		-> you would have to either have to have only one class per @Component annotation
+ * 		   or have to have metadata in spring.xml file.
+ * 		Eg. 3 different Point beans in spring.xml then either create 3 Point classes and specify @Component
+ * 			or define 3 different beans in spring.xml 
+ */
+@Component
 public class Circle implements Shapes {
 
 	private Point center;

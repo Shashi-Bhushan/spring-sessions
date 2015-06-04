@@ -35,10 +35,17 @@ public class Circle implements Shapes {
 	public void setMessageSource(MessageSource messageSource){
 		this.messageSource = messageSource;
 	}
+	public MessageSource getMessageSource(){
+		return this.messageSource;
+	}
 	
 	@Override
 	public void drawShape() {
-		System.out.println("Center Point of circle is : ( " + this.center.getX() + ", " + this.center.getY() + " )");
+		/*
+		 * Message interleaving with text
+		 */
+		System.out.println(this.getMessageSource().getMessage("display.circle",null,"Default Drawing Shape",null));
+		System.out.println(this.getMessageSource().getMessage("display.points",new Object[]{center.getX(),center.getY()},"Default Points(0,0)", null));
 		
 		/*
 		 * MessageSource is the interface implemented by ApplicationContext as well as ResourceBundleMessageSource.

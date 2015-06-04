@@ -2,8 +2,6 @@ package com.shashi.shapes;
 
 import java.util.List;
 
-import org.springframework.context.ApplicationContext;
-
 import com.shashi.Shapes;
 import com.shashi.shapes.point.Point;
 
@@ -20,7 +18,6 @@ import com.shashi.shapes.point.Point;
 public class Triangle implements Shapes {
 
 	private List<Point> points;
-	private ApplicationContext context;
 	
 	public List<Point> getPoints() {
 		return points;

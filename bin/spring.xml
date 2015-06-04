@@ -9,32 +9,19 @@
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
    	<context:annotation-config/>
-	<!-- 
-		we need to tell Spring to scan through not only this xml file for bean definitions here
-		but also, in the code for @Component Annotation and Mark certain classes as Beans
-		
-		component-scan is the tag that does the work
-		
-		for include-filter and exclude-filter,
-		There are five filter types available ‘annotation, assignable, aspectj, regex, custom’ 
-	 -->
 	<context:component-scan base-package="com.shashi">
-		<context:include-filter type="regex" expression=".*Stub.*Repository"/>
-      	<context:exclude-filter type="annotation"
-                              expression="org.springframework.stereotype.Repository"/>
-		<!--
-			<context:include-filter type="assignable" expression="com.javapapers.spring.AnimalService"/> 
-		-->
-   </context:component-scan> 
-	 <!-- 
-	 	instead of pointA, if the name would be 'center' i.e. same as propertyName 
-	 	the Spring will inject bean named 'center' to setter of Circle class.
-	 	
-	 	but let's suppose i'm using this bean for multiple other references.
-	 	in this case, i can't change the name of the bean.
-	 	use QUALIFIER in this case.
-	 	now, a Qualifier is something which i can mention in the bean to say that this bean is a circle related bean.
-	  -->
+   	</context:component-scan> 
+   
+   	<!-- 
+   		This MessageSource class needs to be instantiated in order to use getMessage service
+   	 -->
+   	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+   		<property name="basenames">
+   			<!-- list of all the property files that needs to be loaded by this bean -->
+   			<value>Messages</value>
+   		</property>
+   	</bean>
+   
 	<bean id="pointA" class="com.shashi.shapes.point.Point">
 		<qualifier value="circleRelated"></qualifier>
 		<property name="x" value="${pointA.pointX}"/>

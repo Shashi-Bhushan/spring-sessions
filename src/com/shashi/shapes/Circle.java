@@ -5,6 +5,7 @@ import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.shashi.Shapes;
 import com.shashi.shapes.point.Point;
@@ -22,8 +23,14 @@ import com.shashi.shapes.point.Point;
  * 		   or have to have metadata in spring.xml file.
  * 		Eg. 3 different Point beans in spring.xml then either create 3 Point classes and specify @Component
  * 			or define 3 different beans in spring.xml 
+ * 
+ * @Component is a generic annotation and can be used across application.
+ * Their are special cases of @Component annotation, which are used for particular purpose.
+ * 		-> @Service 	– 	Annotate classes at service layer level.
+ * 		-> @Controller 	– 	Annotate classes at presentation layers level, mainly used in Spring MVC. 		[Controller of MVC]
+ * 		-> @Repository 	– 	Annotate classes at persistence layer, which will act as database repository. 	[Model of MVC]
  */
-@Component
+@Service
 public class Circle implements Shapes {
 
 	private Point center;

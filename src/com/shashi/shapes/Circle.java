@@ -9,12 +9,14 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Component;
 
 import com.shashi.Shapes;
+import com.shashi.event.CustomEvent;
 import com.shashi.shapes.point.Point;
 
 @Component
-public class Circle implements Shapes{
+public class Circle implements Shapes,ApplicationEventPublisherAware {
 
 	private Point center;
+	private ApplicationEventPublisher publisher;
 	/*
 	 * @Resource can also be used here
 	 */
@@ -58,7 +60,18 @@ public class Circle implements Shapes{
 		System.out.println ( "context.getMessage() call from Circle class : " );
 		System.out.println ( messageSource.getMessage("greeting" , null , "Default Greeting" , null) );
 		
-		
+		/**
+		 * In order to publish an event, we need to get hold of an EventPublisher.
+		 */
+		// create an event
+		CustomEvent event = new CustomEvent(this);
+		// call the eventListener
+		publisher.publishEvent(event);
+	}
+
+	@Override
+	public void setApplicationEventPublisher(ApplicationEventPublisher publisher) {
+		this.publisher = publisher;
 	}
 
 }

@@ -5,6 +5,7 @@ import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.shashi.Shapes;
@@ -30,7 +31,7 @@ import com.shashi.shapes.point.Point;
  * 		-> @Controller 	– 	Annotate classes at presentation layers level, mainly used in Spring MVC. 		[Controller of MVC]
  * 		-> @Repository 	– 	Annotate classes at persistence layer, which will act as database repository. 	[Model of MVC]
  */
-@Service
+@Repository
 public class Circle implements Shapes {
 
 	private Point center;

@@ -14,8 +14,18 @@
 		but also, in the code for @Component Annotation and Mark certain classes as Beans
 		
 		component-scan is the tag that does the work
+		
+		for include-filter and exclude-filter,
+		There are five filter types available ‘annotation, assignable, aspectj, regex, custom’ 
 	 -->
-	<context:component-scan base-package="com.shashi"></context:component-scan> 
+	<context:component-scan base-package="com.shashi">
+		<context:include-filter type="regex" expression=".*Stub.*Repository"/>
+      	<context:exclude-filter type="annotation"
+                              expression="org.springframework.stereotype.Repository"/>
+		<!--
+			<context:include-filter type="assignable" expression="com.javapapers.spring.AnimalService"/> 
+		-->
+   </context:component-scan> 
 	 <!-- 
 	 	instead of pointA, if the name would be 'center' i.e. same as propertyName 
 	 	the Spring will inject bean named 'center' to setter of Circle class.

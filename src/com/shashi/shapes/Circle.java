@@ -2,6 +2,7 @@ package com.shashi.shapes;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import com.shashi.Shapes;
 import com.shashi.shapes.point.Point;
@@ -17,6 +18,7 @@ public class Circle implements Shapes {
 	 * their is an unambiguous byType Point Bean ins pring.xml so it'll resolve and autowire that Bean in this Setter function 
 	 */
 	@Autowired
+	@Qualifier("circleRelated")
 	public void setCenter(Point center){
 		this.center = center;
 	}
